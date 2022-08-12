@@ -24,6 +24,27 @@ public class ArrayQueue<T> {
         back++;
     }
 
+
+    public void addToCircularQueue(T element){
+        if(size() == queue.length - 1){
+            int numItems =  size();
+            T[] newQueue = (T[]) new Object[2 * queue.length];
+            System.arraycopy(queue,front,newQueue,0,queue.length-front);
+            System.arraycopy(queue,0,newQueue,queue.length-front,back);
+            queue = newQueue;
+            front = 0;
+            back = numItems;
+        }
+
+        queue[back] = element;
+        if(back < queue.length -1){
+            back++;
+        }else {
+            back = 0;
+        }
+        back++;
+    }
+
     public T poll(){
         if(size() == 0) throw new NoSuchElementException();
 
@@ -37,6 +58,21 @@ public class ArrayQueue<T> {
         return removedElement;
     }
 
+    public T pollCircularQueue(){
+        if(size() == 0) throw new NoSuchElementException();
+
+        T removedElement = queue[front];
+        queue[front] = null;
+        front++;
+        if (size() == 0){
+            front = 0;
+            back = 0;
+        }else if( front == queue.length){
+            front = 0;
+        }
+        return removedElement;
+    }
+
 
     public T peek(){
         if(size() == 0){
@@ -46,25 +82,45 @@ public class ArrayQueue<T> {
     }
 
     public int size(){
-        return back - front;
+        if(front <= back) {
+            return back - front;
+        } else {
+            return  back - front + queue.length;
+        }
+
     }
 
     public void printQueue(){
         System.out.print("FRONT->");
-        for(int i = front; i < back; i++){
-            System.out.print("|" + queue[i]+"|-");
+        if(front <= back) {
+            for(int i = front; i < back; i++){
+                System.out.print("|" + queue[i]+"|-");
+            }
+        }else {
+            for(int i = front; i < queue.length; i++){
+                System.out.print("|" + queue[i]+"|-");
+            }
+            for(int i = 0; i < back; i++){
+                System.out.print("|" + queue[i]+"|-");
+            }
         }
+
         System.out.println(">BACK");
     }
 
     public static void main(String[] args) {
         ArrayQueue<Integer> arrayQueue = new ArrayQueue<>(10);
-        arrayQueue.add(11);
-        arrayQueue.add(12);
-        arrayQueue.add(13);
-        arrayQueue.add(14);
+
+        arrayQueue.add(1);
+        arrayQueue.add(2);
         arrayQueue.poll();
-        System.out.println(arrayQueue.peek());
+        arrayQueue.add(3);
+        arrayQueue.poll();
+        arrayQueue.add(4);
+        arrayQueue.poll();
+        arrayQueue.add(5);
+        arrayQueue.poll();
+        arrayQueue.add(6);
 
         arrayQueue.printQueue();
 
