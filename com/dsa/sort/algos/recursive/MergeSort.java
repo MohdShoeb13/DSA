@@ -1,4 +1,4 @@
-package com.dsa.search.algos.recursive;
+package com.dsa.sort.algos.recursive;
 
 import java.util.Arrays;
 

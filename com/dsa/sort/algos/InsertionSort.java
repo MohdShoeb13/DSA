@@ -1,4 +1,4 @@
-package com.dsa.search.algos;
+package com.dsa.sort.algos;
 
 import java.util.Arrays;
 
