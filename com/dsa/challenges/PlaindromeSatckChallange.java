@@ -1,9 +1,7 @@
-package com.dsa.challanges;
+package com.dsa.challenges;
 
 import com.dsa.adt.LLStack;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Locale;
 
 public class PlaindromeSatckChallange {
