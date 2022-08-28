@@ -44,6 +44,32 @@ public class BinarySearchTree {
             }
         }
 
+        public void traversePreorder(){
+            System.out.print(data+", ");
+
+            if(leftChild != null) {
+                leftChild.traversePreorder();
+            }
+
+            if(rightChild != null){
+                rightChild.traversePreorder();
+            }
+        }
+
+        public void traversePostorder(){
+
+
+            if(leftChild != null) {
+                leftChild.traversePostorder();
+            }
+
+            if(rightChild != null){
+                rightChild.traversePostorder();
+            }
+
+            System.out.print(data+", ");
+        }
+
         public TreeNode get(int value){
             if(value == data){
                 return this;
@@ -124,6 +150,18 @@ public class BinarySearchTree {
         }
     }
 
+    public void traversPreOrder(){
+        if(root != null){
+            root.traversePreorder();
+        }
+    }
+
+    public void traversPostOrder(){
+        if(root != null){
+            root.traversePostorder();
+        }
+    }
+
     public TreeNode get(int value){
         if(root != null){
             return root.get(value);
@@ -145,6 +183,38 @@ public class BinarySearchTree {
         }else {
             return root.min();
         }
+    }
+
+    public void delete(int value){
+        root = delete(root,value);
+    }
+
+    private TreeNode delete(TreeNode subtreeRoot, int value) {
+        if (subtreeRoot == null) {
+            return subtreeRoot;
+        }
+
+        if (value < subtreeRoot.getData()) {
+            subtreeRoot.setLeftChild(delete(subtreeRoot.getLeftChild(), value));
+        }
+        else if (value > subtreeRoot.getData()) {
+            subtreeRoot.setRightChild(delete(subtreeRoot.getRightChild(), value));
+        }
+        else {
+            // Cases 1 and 2: node to delete has 0 or 1 child(ren)
+            if (subtreeRoot.getLeftChild() == null) {
+                return subtreeRoot.getRightChild();
+            }
+            else if (subtreeRoot.getRightChild() == null) {
+                return subtreeRoot.getLeftChild();
+            }
+
+            subtreeRoot.setData(subtreeRoot.getRightChild().min());
+
+            subtreeRoot.setRightChild(delete(subtreeRoot.getRightChild(),subtreeRoot.getData()));
+        }
+
+        return subtreeRoot;
     }
 
 
