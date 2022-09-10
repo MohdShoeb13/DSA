@@ -3,7 +3,7 @@ package com.dsa.challenges.basicprogrames;
 public class CountDigits {
 
     public static void main(String[] args) {
-        System.out.println(countDigits(1212));
+        System.out.println(numberOfDigits(100));
     }
 
     public static int countDigits(int number){
@@ -14,5 +14,9 @@ public class CountDigits {
             counter++;
         }
         return number == 0? 1: counter;
+    }
+
+    public static int numberOfDigits(int number){
+        return (int) Math.floor(Math.log10(number)+1);
     }
 }
