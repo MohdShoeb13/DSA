@@ -1,16 +1,8 @@
-package com.dsa;
+package com.dsa.recursion;
 
-import com.dsa.adt.DoublyLinkedList;
-import com.dsa.adt.SinglyLinkedList;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class Main {
-
+public class Palindrome {
     public static void main(String[] args) {
-       String s = "abba";
+        String s = "abba";
         System.out.println( isPalindrome(s,0,s.length()-1));
     }
 
@@ -18,8 +10,8 @@ public class Main {
         if(length < 0) {
             return reverse.equals(str);
         }
-               reverse+=str.charAt(length);
-      return  reverse(str,length-1,reverse);
+        reverse+=str.charAt(length);
+        return  reverse(str,length-1,reverse);
     }
 
     public static boolean isPalindrome(String str, int start,int end){
@@ -28,9 +20,5 @@ public class Main {
         }
         return (str.charAt(start) == str.charAt(end)) && isPalindrome(str,start+1,end-1);
     }
-
-
-
-
-
 }
+

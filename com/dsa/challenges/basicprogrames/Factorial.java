@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class Factorial {
     public static void main(String[] args) {
-        System.out.println(factorialBig(100));
+        System.out.println(factorial(0));
 //        System.out.println(factorialRecursive(12));
     }
 
