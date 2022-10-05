@@ -6,7 +6,7 @@ public class SumOfDigits {
     }
 
     public static int digitSum(int number){
-        if(number == 0) return  number;
+        if(number <= 9) return  number;
         return digitSum(number/10) + number%10;
     }
 }
