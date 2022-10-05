@@ -1,24 +1,20 @@
 package com.dsa.recursion;
 
 public class SubsetSum {
-    public static void main(String[] args) {
-        System.out.println(subs(new int[]{1,2,3},4,0,1,0));
+    static int countSubsets(int arr[], int n, int sum)
+    {
+        if(n==0)
+            return sum==0? 1 : 0;
+
+        return countSubsets(arr, n-1, sum) + countSubsets(arr, n-1, sum - arr[n-1]);
     }
 
-    static int subs(int[] array,int sum, int i , int j,int count){
-        if (sum == 0){
-            return 1;
-        }
-        if(j == array.length){
-            return count;
-        }
+    public static void main (String[] args) {
 
-        int subSum = array[i] + array[j];
-        if (subSum == sum){
-            count++;
-        }
+        int n = 3, arr[]= {10, 20, 15}, sum = 25;
 
-        return subs(array,sum,i+1,j+1,count);
+        System.out.println(countSubsets(arr, n, sum));
 
     }
+
 }
