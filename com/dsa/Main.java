@@ -10,8 +10,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-       String s = "abba";
-        System.out.println( isPalindrome(s,0,s.length()-1));
+
     }
 
     public static boolean reverse(String str, int length,String reverse){

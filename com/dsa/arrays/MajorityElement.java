@@ -1,9 +1,14 @@
 package com.dsa.arrays;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 public class MajorityElement {
     public static void main(String[] args) {
-      int[] array = {1,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3};
-        System.out.println(majorityElement(array));
+      int[] array = {1,4,1,6,1};
+//        System.out.println(majorityElement(array));
+        hashMajority(array);
     }
 
     static int majorityElement(int[] array){
@@ -21,6 +26,30 @@ public class MajorityElement {
         }
         return -1;
     }
+
+  static void hashMajority(int[] array){
+      Map<Integer,Integer> map = new HashMap<>();
+      for (int j : array) {
+          if (map.containsKey(j)) {
+              map.put(j, map.get(j) + 1);
+          } else {
+              map.put(j, 1);
+          }
+      }
+      int majority = -1;
+      int max = 0;
+      for (Map.Entry<Integer,Integer> entry : map.entrySet()){
+          if(max < entry.getValue()){
+              max = entry.getValue();
+              majority = entry.getKey();
+          }
+      }
+      if(max > array.length/2){
+          System.out.println(majority);
+      }else {
+          System.out.println("No Majority");
+      }
+  }
 
     static int findMajority(int arr[], int n)
     {

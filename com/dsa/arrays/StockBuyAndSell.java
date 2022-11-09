@@ -2,8 +2,7 @@ package com.dsa.arrays;
 
 public class StockBuyAndSell {
     public static void main(String[] args) {
-        int[] prices = {1,5,3,8,12};
-        System.out.println(maxProfit(prices,0,prices.length-1));
+        int[] prices = {5,2,7,3,6,1,2,4};
         System.out.println(maxProfitEfficient(prices));
     }
 
