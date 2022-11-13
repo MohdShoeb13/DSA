@@ -7,8 +7,7 @@ import java.util.Map;
 public class MajorityElement {
     public static void main(String[] args) {
       int[] array = {1,4,1,6,1};
-//        System.out.println(majorityElement(array));
-        hashMajority(array);
+        System.out.println(findMajority(array,array.length));
     }
 
     static int majorityElement(int[] array){

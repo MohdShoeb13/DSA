@@ -1,19 +1,36 @@
 package com.dsa.arrays;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class SecondLargest {
     public static void main(String[] args) {
-       secondLargest(new int[] {1,2,3,4,5,6,654,123,444,33,123,789,789});
+        int[] array = {2, 1, 2};
+        System.out.println(secondLargestAndLargest(array));
     }
 
-    static void secondLargest(int[] array){
-        int largest = Integer.MIN_VALUE;
-        int secondLargest = Integer.MAX_VALUE;
-        for (int element : array) {
-            if (element > largest) {
-                secondLargest = largest;
-                largest = element;
+    static ArrayList<Integer> secondLargestAndLargest(int[] array){
+        int largest = 0;
+        int result = -1;
+
+        for (int i = 1; i < array.length; i++){
+            if(array[i] > array[largest]){
+                result = largest;
+                largest = i;
+            }else if(array[i] != array[largest]){
+                if(result == -1 || array[i] > array[result]){
+                    result = i;
+                }
             }
         }
-        System.out.println(secondLargest);
+
+       ArrayList<Integer> solution = new ArrayList<>();
+        solution.add(array[largest]);
+        solution.add(array[result]);
+        return solution;
     }
 }
+
+
+
+
