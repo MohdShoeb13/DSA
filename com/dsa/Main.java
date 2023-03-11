@@ -1,54 +1,36 @@
 package com.dsa;
 
-import com.dsa.adt.DoublyLinkedList;
-import com.dsa.adt.SinglyLinkedList;
 
-import java.util.ArrayList;
+import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
 
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5};
-
-
+        int[] array = {1,4,5,3,2};
+        Main.bubbleSort(array);
+        System.out.println(Arrays.toString(array));
     }
 
-    static void reverse(ArrayList<Integer> arr, int n,int left, int right)
-    {
-        //reversing the sub-array from left index to right index.
-        while (left < right) {
-            //swapping values at index stored at left and right index.
-            int temp = arr.get(left);
-            arr.set(left, arr.get(right));
-            arr.set(right, temp);
-
-            //updating values of left and right index.
-            left+=1;
-            right-=1;
-        }
-    }
-
-    //Function to reverse every sub-array group of size k.
-    void reverseInGroups(ArrayList<Integer> arr, int n, int k) {
-        for (int i = 0; i < n; i += k) {
-
-            //If (ith index +k) is less than total number of elements it means
-            //k elements exist from current index so we reverse k elements
-            //starting from current index.
-            if(i+k < n){
-                //reverse function called to reverse any part of the array.
-                reverse(arr,n,i,i+k-1);
-            }
-            //Else k elements from current index doesn't exist.
-            //In that case we just reverse the remaining elements.
-            else{
-                //reverse function called to reverse any part of the array.
-                reverse(arr,n,i,n-1);
+   static void bubbleSort(int[] array){
+        boolean swapped;
+        for(int i = 0; i < array.length; i++){
+            swapped = false;
+            for(int j = 0; j < array.length-i-1; j++){
+                if(array[j+1] < array[j]){
+                    int temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                    swapped = true;
+                }
             }
 
+            if(!swapped)break;
         }
-    }
+   }
+
+
+
 }
 
