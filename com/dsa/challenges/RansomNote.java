@@ -1,2 +1,10 @@
-package com.dsa.challenges;public class RansomNote {
+package com.dsa.challenges;
+
+public class RansomNote {
+
+    public static void main(String[] args) {
+
+    }
+
+
 }

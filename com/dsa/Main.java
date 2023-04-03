@@ -2,33 +2,39 @@ package com.dsa;
 
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) {
-        int[] array = {1,4,5,3,2};
-        Main.bubbleSort(array);
-        System.out.println(Arrays.toString(array));
+    public static void main (String[] args)
+    {
+        int arr[] = new int[]{10,80,30,90,40,50,70};
+
+        int n = arr.length;
+        iPartition(arr,0,n-1);
+
+        for(int x: arr)
+            System.out.print(x+" ");
+
     }
 
-   static void bubbleSort(int[] array){
-        boolean swapped;
-        for(int i = 0; i < array.length; i++){
-            swapped = false;
-            for(int j = 0; j < array.length-i-1; j++){
-                if(array[j+1] < array[j]){
-                    int temp = array[j];
-                    array[j] = array[j+1];
-                    array[j+1] = temp;
-                    swapped = true;
-                }
+    static int iPartition(int arr[], int l, int h)
+    {
+        int pivot=arr[h];
+        int i=l-1;
+        for(int j=l;j<=h-1;j++){
+            if(arr[j]<pivot){
+                i++;
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
             }
-
-            if(!swapped)break;
         }
-   }
+        int temp=arr[i+1];
+        arr[i+1]=arr[h];
+        arr[h]=temp;
+        return i+1;
+    }
 
 
 
